@@ -1,17 +1,30 @@
 ﻿#nullable enable
 
 using System;
-using System.Reflection;
 
 namespace pwm
 {
     public class Language
     {
+
         public static readonly Language Instance = new();
 
         public string AppName => "PWM";
 
-        public string AppVersion => "Ver " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        public string AppVersion
+        {
+            get
+            {
+                var versionInfo = Windows.ApplicationModel.Package.Current.Id.Version;
+                return "Ver " + string.Format(
+                           "{0}.{1}.{2}.{3}",
+                           versionInfo.Major,
+                           versionInfo.Minor,
+                           versionInfo.Build,
+                           versionInfo.Revision);
+
+            }
+        }
 
         public string GitHubRepositoryURL = "https://github.com/Yuki4-dev/pwm";
 
@@ -47,7 +60,7 @@ namespace pwm
 
             public string Passwords => "Passwords";
 
-            public string Search => "SearchPassword";
+            public string Search => "Search password";
 
             public string Save => "Save";
 
@@ -55,7 +68,7 @@ namespace pwm
 
             public string Setting => "Setting";
 
-            public string DeleteSelection => "DeletePassword Selection";
+            public string DeleteSelection => "Delete password selection";
 
             public string Name => "Name";
 
@@ -63,31 +76,29 @@ namespace pwm
 
             public string UserId => "UserId";
 
-            public string VisiblePassword => "Visible Password.";
+            public string VisiblePassword => "Visible password.";
 
-            public string AddPassword => "AddPassword Password.";
+            public string AddPassword => "AddPassword password.";
 
             public string View => "View";
 
-            public string Edit => "EditPassword";
+            public string Edit => "Edit password";
 
-            public string Delete => "DeletePassword";
+            public string Delete => "Delete password";
 
-            public string EditFailedMessage => "EditPassword Password Canceled.";
+            public string EditFailedMessage => "Edit password canceled.";
 
-            public string DeleteMessageTitle => "DeletePassword Password";
+            public string DeleteMessageTitle => "Delete password";
 
-            public string DeleteMessage => "DeletePassword?" + Environment.NewLine + "{0}";
+            public string DeleteMessage => "Delete password?" + Environment.NewLine + "{0}";
 
             public string DeleteSelectionNothing => "Select password nothing.";
 
-            public string DeleteSelectionTitle => "DeletePassword Password";
-
-            public string DeleteSelectionMessage => "DeletePassword {0} Password?";
+            public string DeleteSelectionMessage => "Delete {0} Password?";
 
             public string ClosingTitle => "Closing";
 
-            public string ClosingMessage => "Don't Save Password.";
+            public string ClosingMessage => "Don't Save password.";
 
             public string ClosingSave => "Save";
 
@@ -100,13 +111,13 @@ namespace pwm
         {
             public string Setting => "Setting";
 
-            public string ApplicationTheme => "Application Theme";
+            public string ApplicationTheme => "Application theme";
 
-            public string NeedPasswordLength => "Need Password Length";
+            public string NeedPasswordLength => "Need password length";
 
-            public string NaturalOrderSort => "Natural Order Sort";
+            public string NaturalOrderSort => "Natural order sort";
 
-            public string SearchPasswordTarget => "Password SearchPassword Target";
+            public string SearchPasswordTarget => "Password search password Target";
 
             public string SearchPasswordTarget_Name => "Name";
 
@@ -118,7 +129,7 @@ namespace pwm
 
             public string About => "About";
 
-            public string SystemDefault => "System Default";
+            public string SystemDefault => "System default";
 
             public string Dark => "Dark";
 
@@ -133,7 +144,7 @@ namespace pwm
 
         public class CreatePasswordContentDialogLanguage
         {
-            public string Title => "Create Password";
+            public string Title => "Create password";
 
             public string PrimaryButtonText => "OK";
 
@@ -152,7 +163,7 @@ namespace pwm
 
         public class InputPasswordContentDialogLanguage
         {
-            public string Title => "Input Password";
+            public string Title => "Input password";
 
             public string PrimaryButtonText => "OK";
 
@@ -161,9 +172,9 @@ namespace pwm
 
         public class PasswordInformationContentDialogLanguage
         {
-            public string TitleEdit => "EditPassword";
+            public string TitleEdit => "Edit password";
 
-            public string TitleAdd => "AddPassword";
+            public string TitleAdd => "Add password";
 
             public string TitleView => "View";
 
